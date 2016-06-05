@@ -40,8 +40,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
+        setNavDrawer();
         injectDependencies();
     }
+
+    protected abstract void setNavDrawer();
 
     private void injectDependencies() {
         setComponent(MyApplication.getApp(this).getComponent());
