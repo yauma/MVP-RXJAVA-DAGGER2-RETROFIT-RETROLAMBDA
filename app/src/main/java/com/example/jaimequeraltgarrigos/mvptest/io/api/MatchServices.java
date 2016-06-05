@@ -4,16 +4,18 @@ import com.example.jaimequeraltgarrigos.mvptest.domain.League;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Query;
+
+import retrofit.Call;
+import retrofit.http.GET;
+import retrofit.http.Query;
+import rx.Observable;
 
 /**
  * Created by jaimequeraltgarrigos on 5/15/16.
  */
 public interface MatchServices {
     @GET(MyConstant.URL_GET_MATCH)
-    Call<List<League>> getMatches();
+    Observable<List<League>> getMatches();
 
     @GET(MyConstant.URL_GET_MATCH)
     Call<List<League>> getTournament(@Query("tournamentId") int tournamentId);

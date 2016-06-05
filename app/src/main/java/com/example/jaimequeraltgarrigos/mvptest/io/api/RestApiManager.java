@@ -1,21 +1,25 @@
 package com.example.jaimequeraltgarrigos.mvptest.io.api;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+
+import retrofit.GsonConverterFactory;
+import retrofit.Retrofit;
+import retrofit.RxJavaCallAdapterFactory;
+
+
 
 /**
  * Created by jaimequeraltgarrigos on 5/17/16.
  */
 public class RestApiManager {
-    private MatchServices service;
+    private static Retrofit retrofit;
 
-    public MatchServices getMatchServices() {
-        if (service == null) {
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(MyConstant.API_BASE_URL)
+    public static Retrofit getInstance() {
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
+                    .baseUrl(MyConstant.API_BASE_URL)
                     .build();
-            service = retrofit.create(MatchServices.class);
         }
-        return service;
+        return retrofit;
     }
 }

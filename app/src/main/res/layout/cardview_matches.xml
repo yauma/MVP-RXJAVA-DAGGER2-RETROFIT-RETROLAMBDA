@@ -46,7 +46,8 @@
                 android:textSize="15sp"
                 android:textAlignment="gravity"
                 android:gravity="right"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="10dp"
+                android:maxLines="1" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -106,7 +107,8 @@
                 android:gravity="left"
                 android:layout_weight="1"
                 android:textSize="15dp"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:maxLines="1" />
 
             <ImageView
                 android:layout_width="30dp"

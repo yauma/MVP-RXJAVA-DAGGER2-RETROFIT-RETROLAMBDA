@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import com.example.jaimequeraltgarrigos.mvptest.AppComponent;
+import com.example.jaimequeraltgarrigos.mvptest.MyApplication;
 import com.example.jaimequeraltgarrigos.mvptest.R;
 
 
@@ -38,7 +40,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
+        injectDependencies();
     }
+
+    private void injectDependencies() {
+        setComponent(MyApplication.getApp(this).getComponent());
+    }
+
+    protected abstract void setComponent(AppComponent component);
 
 
     /**

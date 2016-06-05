@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.example.jaimequeraltgarrigos.mvptest.AppComponent;
+import com.example.jaimequeraltgarrigos.mvptest.MyApplication;
+
 import butterknife.ButterKnife;
 
 /**
@@ -25,15 +28,14 @@ public abstract class BaseFragment extends Fragment {
     protected Context CONTEXT;
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        CONTEXT = activity;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        CONTEXT = context;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        searchMatches();
     }
 
     @Override
@@ -45,7 +47,17 @@ public abstract class BaseFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindViews(view);
+        injectDepencies();
+        viewCreated();
     }
+
+    protected abstract void viewCreated();
+
+    private void injectDepencies() {
+        setupComponent(MyApplication.getApp(getContext()).getComponent());
+    }
+
+    protected abstract void setupComponent(AppComponent component);
 
     @Override
     public void onStart() {
@@ -78,7 +90,6 @@ public abstract class BaseFragment extends Fragment {
     /**
      * Trigger the search to the API calling the presenter method
      * */
-    protected abstract void searchMatches();
 
 
 

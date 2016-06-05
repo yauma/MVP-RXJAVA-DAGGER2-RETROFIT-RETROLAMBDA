@@ -2,7 +2,7 @@ package com.example.jaimequeraltgarrigos.mvptest.presenter;
 import com.example.jaimequeraltgarrigos.mvptest.common.BasePresenter;
 import com.example.jaimequeraltgarrigos.mvptest.domain.League;
 import com.example.jaimequeraltgarrigos.mvptest.domain.Match;
-import com.example.jaimequeraltgarrigos.mvptest.interactor.ArtistSearchInteractor;
+import com.example.jaimequeraltgarrigos.mvptest.interactor.MatchSearchInteractor;
 import com.example.jaimequeraltgarrigos.mvptest.io.MatchSearchServerCallback;
 import com.example.jaimequeraltgarrigos.mvptest.ui.viewmodel.MatchSearchView;
 
@@ -18,14 +18,14 @@ public class MatchesSearchPresenter extends BasePresenter implements MatchSearch
     public static final String LOG_TAG = MatchesSearchPresenter.class.getSimpleName();
 
     MatchSearchView searchView;
-    ArtistSearchInteractor searchInteractor = new ArtistSearchInteractor();
+    MatchSearchInteractor searchInteractor;
     private ArrayList<Object> mDataItems;
 
     public MatchesSearchPresenter(MatchSearchView searchView) {
         this.searchView = searchView;
     }
 
-    public MatchesSearchPresenter(MatchSearchView view, ArtistSearchInteractor interactor) {
+    public MatchesSearchPresenter(MatchSearchView view, MatchSearchInteractor interactor) {
         searchView = view;
         searchInteractor = interactor;
     }

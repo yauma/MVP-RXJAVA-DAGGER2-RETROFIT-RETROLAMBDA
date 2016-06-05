@@ -30,8 +30,8 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
 
     private static MyClickListener myClickListener;
 
-    public MatchesAdapter(ArrayList<Object> mDataSet, Context context) {
-        this.mDataSet = mDataSet;
+    public MatchesAdapter(Context context) {
+        this.mDataSet = new ArrayList<>();
         this.context = context;
     }
 
