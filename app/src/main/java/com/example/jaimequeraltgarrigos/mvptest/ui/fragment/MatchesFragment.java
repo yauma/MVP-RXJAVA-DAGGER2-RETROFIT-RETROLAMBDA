@@ -1,6 +1,5 @@
 package com.example.jaimequeraltgarrigos.mvptest.ui.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,9 +36,6 @@ public class MatchesFragment extends BaseFragment implements MatchSearchView {
     @Inject
     MatchesAdapter adapter;
 
-    @Inject
-    Context context;
-
     @BindView(R.id.allMatchesRecyclerView)
     RecyclerView mRecyclerView;
 
@@ -71,8 +67,8 @@ public class MatchesFragment extends BaseFragment implements MatchSearchView {
         adapter.setOnItemClickListener(new MatchesAdapter.MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                Intent i = new Intent(context, DetailsActivity.class);
-                startActivity(i);
+                Intent i = new Intent(getActivity(), DetailsActivity.class);
+                getActivity().startActivity(i);
             }
         });
     }

@@ -23,6 +23,10 @@ public class HomeActivity extends BaseActivity {
     private ViewPager viewPager;
 
     @Override
+    protected void injectViews() {
+    }
+
+    @Override
     protected void setTablayout() {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);

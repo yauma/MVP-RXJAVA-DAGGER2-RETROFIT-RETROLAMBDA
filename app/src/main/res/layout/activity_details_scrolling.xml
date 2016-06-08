@@ -8,11 +8,7 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <fragment android:name="com.example.jaimequeraltgarrigos.mvptest.ui.fragment.DetailsFrgment"
-        android:id="@+id/fragment_details"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+    <include layout="@layout/container_details" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
