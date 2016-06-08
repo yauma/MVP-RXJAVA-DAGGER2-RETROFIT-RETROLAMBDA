@@ -1,4 +1,6 @@
 package com.example.jaimequeraltgarrigos.mvptest.presenter;
+
+import com.example.jaimequeraltgarrigos.mvptest.MyConstant;
 import com.example.jaimequeraltgarrigos.mvptest.common.BasePresenter;
 import com.example.jaimequeraltgarrigos.mvptest.domain.League;
 import com.example.jaimequeraltgarrigos.mvptest.domain.Match;
@@ -11,7 +13,6 @@ import java.util.List;
 
 /**
  * Created by Pedro Antonio Hernández on 13/06/2015.
- *
  */
 public class MatchesSearchPresenter extends BasePresenter implements MatchSearchServerCallback {
 
@@ -41,8 +42,14 @@ public class MatchesSearchPresenter extends BasePresenter implements MatchSearch
 
     }
 
-    public void searchMatches() {
-        searchInteractor.fetchLeagues(this);
+    public void searchMatches(String query) {
+        if (query.equals(MyConstant.ALL)) {
+            searchInteractor.fecthAllMatches(this);
+        } else if (query.equals(MyConstant.LIVE)){
+            searchInteractor.fecthLiveMatches(this);
+        }else{
+            searchInteractor.fecthFinishedMatches(this);
+        }
 
     }
 
@@ -55,6 +62,11 @@ public class MatchesSearchPresenter extends BasePresenter implements MatchSearch
     @Override
     public void onFailedSearch() {
 
+    }
+
+    @Override
+    public void firstLeague(League league) {
+        int i = 0;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.example.jaimequeraltgarrigos.mvptest.io.api;
 
+import com.example.jaimequeraltgarrigos.mvptest.MyConstant;
+
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;

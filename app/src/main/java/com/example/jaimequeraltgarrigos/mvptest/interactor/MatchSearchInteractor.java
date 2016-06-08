@@ -1,6 +1,7 @@
 package com.example.jaimequeraltgarrigos.mvptest.interactor;
 
 
+import com.example.jaimequeraltgarrigos.mvptest.MyConstant;
 import com.example.jaimequeraltgarrigos.mvptest.domain.League;
 import com.example.jaimequeraltgarrigos.mvptest.io.MatchSearchServerCallback;
 import com.example.jaimequeraltgarrigos.mvptest.io.api.MatchServices;
@@ -25,7 +26,7 @@ public class MatchSearchInteractor {
         this.service = RestApiManager.getInstance().create(MatchServices.class);
     }
 
-/*    public void fetchLeagues(final MatchSearchServerCallback callback) {
+/*    public void fecthAllMatches(final MatchSearchServerCallback callback) {
 
         service.getMatches().enqueue(new Callback<List<League>>() {
             @Override
@@ -44,7 +45,7 @@ public class MatchSearchInteractor {
         });
     }*/
 
-    public void fetchLeagues(MatchSearchServerCallback callback) {
+    public void fecthAllMatches(MatchSearchServerCallback callback) {
         service.getMatches()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(leagues -> {
@@ -55,8 +56,26 @@ public class MatchSearchInteractor {
                         });
     }
 
-    private void showLeague(List<League> leagues) {
-        int i = 0;
+    public void fecthLiveMatches(MatchSearchServerCallback callback) {
+        service.getLiveMatch(MyConstant.LIVE)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(leagues -> {
+                            callback.onMatchesFound((ArrayList<League>) leagues);
+                        }
+                        , throwable -> {
+                            callback.onFailedSearch();
+                        });
+    }
+
+    public void fecthFinishedMatches(MatchSearchServerCallback callback) {
+        service.getFinidhedMatch(MyConstant.FINISHED)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(leagues -> {
+                            callback.onMatchesFound((ArrayList<League>) leagues);
+                        }
+                        , throwable -> {
+                            callback.onFailedSearch();
+                        });
     }
 
 

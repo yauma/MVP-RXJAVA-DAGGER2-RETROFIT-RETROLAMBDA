@@ -6,4 +6,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="all_matches">All</string>
+    <string name="live_matches">Live</string>
+    <string name="finished_matches">Finished</string>
+    <string name="Details">Details</string>
 </resources>

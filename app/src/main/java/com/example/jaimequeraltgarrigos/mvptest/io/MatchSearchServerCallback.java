@@ -13,4 +13,6 @@ public interface MatchSearchServerCallback extends ServerCallback{
     void onMatchesFound(ArrayList<League> artists);
 
     void onFailedSearch();
+
+    void firstLeague(League league);
 }

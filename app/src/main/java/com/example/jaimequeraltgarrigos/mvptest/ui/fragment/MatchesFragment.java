@@ -1,7 +1,11 @@
 package com.example.jaimequeraltgarrigos.mvptest.ui.fragment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ProgressBar;
 
 import com.example.jaimequeraltgarrigos.mvptest.AppComponent;
@@ -11,6 +15,7 @@ import com.example.jaimequeraltgarrigos.mvptest.common.BasePresenter;
 import com.example.jaimequeraltgarrigos.mvptest.component.DaggerMatchSearchComponent;
 import com.example.jaimequeraltgarrigos.mvptest.module.MatchSearchModule;
 import com.example.jaimequeraltgarrigos.mvptest.presenter.MatchesSearchPresenter;
+import com.example.jaimequeraltgarrigos.mvptest.ui.activity.DetailsActivity;
 import com.example.jaimequeraltgarrigos.mvptest.ui.adapter.MatchesAdapter;
 import com.example.jaimequeraltgarrigos.mvptest.ui.viewmodel.MatchSearchView;
 
@@ -32,6 +37,9 @@ public class MatchesFragment extends BaseFragment implements MatchSearchView {
     @Inject
     MatchesAdapter adapter;
 
+    @Inject
+    Context context;
+
     @BindView(R.id.allMatchesRecyclerView)
     RecyclerView mRecyclerView;
 
@@ -39,6 +47,15 @@ public class MatchesFragment extends BaseFragment implements MatchSearchView {
     ProgressBar mProgressBar;
 
 
+        public static MatchesFragment newInstance(String query) {
+        MatchesFragment matchesFragment = new MatchesFragment();
+
+        Bundle args = new Bundle();
+        args.putString("query", query);
+        matchesFragment.setArguments(args);
+
+        return matchesFragment;
+    }
 
     @Override
     protected void setupComponent(AppComponent component) {
@@ -46,6 +63,18 @@ public class MatchesFragment extends BaseFragment implements MatchSearchView {
                 .matchSearchModule(new MatchSearchModule(this)).build()
                 .inject(this);
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.setOnItemClickListener(new MatchesAdapter.MyClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                Intent i = new Intent(context, DetailsActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -59,7 +88,8 @@ public class MatchesFragment extends BaseFragment implements MatchSearchView {
     }
 
     protected void viewCreated() {
-        presenter.searchMatches();
+        String query = getArguments().getString("query");
+        presenter.searchMatches(query);
     }
 
     @Override
