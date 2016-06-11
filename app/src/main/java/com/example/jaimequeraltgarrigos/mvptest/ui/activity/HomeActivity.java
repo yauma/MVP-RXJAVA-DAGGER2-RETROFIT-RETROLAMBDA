@@ -13,6 +13,9 @@ import com.example.jaimequeraltgarrigos.mvptest.MyConstant;
 import com.example.jaimequeraltgarrigos.mvptest.R;
 import com.example.jaimequeraltgarrigos.mvptest.common.BaseActivity;
 import com.example.jaimequeraltgarrigos.mvptest.common.BasePresenter;
+import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.AllMatchesFragment;
+import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.FinishedMatchesFragment;
+import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.LiveMatchesFragment;
 import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.MatchesFragment;
 
 import java.util.ArrayList;
@@ -53,9 +56,9 @@ public class HomeActivity extends BaseActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(MatchesFragment.newInstance(MyConstant.ALL), getResources().getString(R.string.all_matches));
-        adapter.addFragment(MatchesFragment.newInstance(MyConstant.LIVE), getResources().getString(R.string.live_matches));
-        adapter.addFragment(MatchesFragment.newInstance(MyConstant.FINISHED), getResources().getString(R.string.finished_matches));
+        adapter.addFragment(AllMatchesFragment.newInstance(MyConstant.ALL), getResources().getString(R.string.all_matches));
+        adapter.addFragment(LiveMatchesFragment.newInstance(MyConstant.LIVE), getResources().getString(R.string.live_matches));
+        adapter.addFragment(FinishedMatchesFragment.newInstance(MyConstant.FINISHED), getResources().getString(R.string.finished_matches));
         viewPager.setAdapter(adapter);
     }
 

@@ -61,7 +61,7 @@ public class MatchesFragment extends BaseFragment implements MatchSearchView {
 
     }
 
-    @Override
+/*    @Override
     public void onResume() {
         super.onResume();
         adapter.setOnItemClickListener(new MatchesAdapter.MyClickListener() {
@@ -71,7 +71,7 @@ public class MatchesFragment extends BaseFragment implements MatchSearchView {
                 getActivity().startActivity(i);
             }
         });
-    }
+    }*/
 
     @Override
     protected int getFragmentLayout() {
