@@ -4,8 +4,12 @@ import com.example.jaimequeraltgarrigos.mvptest.ActivityScope;
 import com.example.jaimequeraltgarrigos.mvptest.AppComponent;
 import com.example.jaimequeraltgarrigos.mvptest.module.MatchSearchModule;
 import com.example.jaimequeraltgarrigos.mvptest.presenter.MatchesSearchPresenter;
-import com.example.jaimequeraltgarrigos.mvptest.ui.adapter.MatchesAdapter;
-import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.MatchesFragment;
+import com.example.jaimequeraltgarrigos.mvptest.ui.adapter.AllMatchesAdapter;
+import com.example.jaimequeraltgarrigos.mvptest.ui.adapter.FinishedMatchesAdapter;
+import com.example.jaimequeraltgarrigos.mvptest.ui.adapter.LiveMatchesAdapter;
+import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.AllMatchesFragment;
+import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.FinishedMatchesFragment;
+import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.LiveMatchesFragment;
 
 import dagger.Component;
 
@@ -20,11 +24,21 @@ import dagger.Component;
 
 public interface MatchSearchComponent {
 
-    void inject(MatchesFragment matchesFragment);
+    void inject(LiveMatchesFragment liveMatchesFragment);
+
+    void inject(FinishedMatchesFragment finishedMatchesFragment);
+
+    void inject(AllMatchesFragment allMatchesFragment);
+
 
     MatchesSearchPresenter getPresenter();
 
-    MatchesAdapter getAdapter();
+
+    AllMatchesAdapter getAllAdapter();
+
+    LiveMatchesAdapter getLiveAdapter();
+
+    FinishedMatchesAdapter getFinishedAdapter();
 
 
 }

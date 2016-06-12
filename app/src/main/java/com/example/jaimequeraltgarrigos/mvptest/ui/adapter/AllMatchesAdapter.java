@@ -17,9 +17,10 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 /**
- * Created by jaimequeraltgarrigos on 5/15/16.
+ * Created by jaimequeraltgarrigos on 6/11/16.
  */
-public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHolder> {
+public class AllMatchesAdapter extends RecyclerView.Adapter<AllMatchesAdapter.ViewHolder> {
+
 
     public static final int LEAGUE_NAME = 0;
     public static final int MATCH = 1;
@@ -30,11 +31,10 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
 
     private static MyClickListener myClickListener;
 
-    public MatchesAdapter(Context context) {
+    public AllMatchesAdapter(Context context) {
         this.mDataSet = new ArrayList<>();
         this.context = context;
     }
-
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -125,7 +125,9 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
             team2Avatar = (ImageView) itemView.findViewById(R.id.team2Avatar);
             linearLayoutMatchContainer = (LinearLayout) itemView.findViewById(R.id.linearLayoutContainer);
             linearLayoutMatchContainer.setOnClickListener(this);
+
         }
+
 
         @Override
         public void onClick(View v) {
@@ -136,6 +138,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
     public void setOnItemClickListener(MyClickListener myClickListener) {
         this.myClickListener = myClickListener;
     }
+
 
     public static class LeagueNameViewHolder extends ViewHolder {
         TextView leagueName;
@@ -149,4 +152,5 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
     public interface MyClickListener {
         public void onItemClick(int position, View v);
     }
+
 }

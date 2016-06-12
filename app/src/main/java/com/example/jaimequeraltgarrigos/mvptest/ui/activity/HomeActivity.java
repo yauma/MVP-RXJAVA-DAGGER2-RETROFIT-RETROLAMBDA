@@ -16,7 +16,6 @@ import com.example.jaimequeraltgarrigos.mvptest.common.BasePresenter;
 import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.AllMatchesFragment;
 import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.FinishedMatchesFragment;
 import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.LiveMatchesFragment;
-import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.MatchesFragment;
 
 import java.util.ArrayList;
 import java.util.List;
