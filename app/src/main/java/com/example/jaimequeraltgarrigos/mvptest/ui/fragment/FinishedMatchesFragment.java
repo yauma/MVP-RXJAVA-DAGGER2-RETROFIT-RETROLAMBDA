@@ -80,6 +80,7 @@ public class FinishedMatchesFragment extends BaseFragment implements MatchSearch
 
     @Override
     public void displayFoundMatches(ArrayList<Object> matches) {
+        mProgressBar.setVisibility(View.INVISIBLE);
         this.matches = matches;
         adapter.addLeagues(matches);
     }

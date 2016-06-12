@@ -2,6 +2,7 @@ package com.example.jaimequeraltgarrigos.mvptest.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ProgressBar;
 
 import com.example.jaimequeraltgarrigos.mvptest.AppComponent;
@@ -61,6 +62,7 @@ public class DetailsFragment extends BaseFragment implements MatchSearchView {
 
     @Override
     public void displayFoundMatches(ArrayList<Object> matches) {
+        mProgressBar.setVisibility(View.INVISIBLE);
         this.matches = matches;
         adapter.addLeagues(matches);
     }
