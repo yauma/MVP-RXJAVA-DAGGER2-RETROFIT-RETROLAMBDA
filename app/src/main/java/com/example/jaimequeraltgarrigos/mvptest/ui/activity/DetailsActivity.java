@@ -13,6 +13,8 @@ import com.example.jaimequeraltgarrigos.mvptest.R;
 import com.example.jaimequeraltgarrigos.mvptest.common.BaseActivity;
 import com.example.jaimequeraltgarrigos.mvptest.common.BasePresenter;
 import com.example.jaimequeraltgarrigos.mvptest.domain.Match;
+import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -48,8 +50,11 @@ public class DetailsActivity extends BaseActivity {
     private Match matchDetail;
 
     @Override
-    protected void injectViews() {
+    protected void setViews() {
+        Gson gson = new Gson();
+        matchDetail = gson.fromJson(getIntent().getStringExtra("match"), Match.class);
         ButterKnife.bind(this);
+        setMatchDetails();
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
@@ -86,9 +91,18 @@ public class DetailsActivity extends BaseActivity {
         }
     }
 
+    private void setMatchDetails() {
+        Picasso.with(this).load(matchDetail.getTeams().get(0).getLogoUrl()).into(logo);
+        Picasso.with(this).load(matchDetail.getTeams().get(1).getLogoUrl()).into(logo2);
+        scoreTeam1.setText(matchDetail.getTeams().get(0).getResults().getRunningscore());
+        scoreTeam2.setText(matchDetail.getTeams().get(1).getResults().getRunningscore());
+        team1Name.setText(matchDetail.getTeams().get(0).getShortName());
+        team2Name.setText(matchDetail.getTeams().get(1).getShortName());
+    }
+
+
     @Override
     protected void setTablayout() {
-
     }
 
     @Override

@@ -13,6 +13,7 @@ import com.example.jaimequeraltgarrigos.mvptest.common.BasePresenter;
 import com.example.jaimequeraltgarrigos.mvptest.component.DaggerMatchSearchComponent;
 import com.example.jaimequeraltgarrigos.mvptest.module.MatchSearchModule;
 import com.example.jaimequeraltgarrigos.mvptest.presenter.MatchesSearchPresenter;
+import com.example.jaimequeraltgarrigos.mvptest.ui.activity.NavigationUtils;
 import com.example.jaimequeraltgarrigos.mvptest.ui.adapter.FinishedMatchesAdapter;
 import com.example.jaimequeraltgarrigos.mvptest.ui.viewmodel.MatchSearchView;
 
@@ -29,15 +30,14 @@ public class FinishedMatchesFragment extends BaseFragment implements MatchSearch
 
     @Inject
     MatchesSearchPresenter presenter;
-
     @Inject
     FinishedMatchesAdapter adapter;
 
     @BindView(R.id.allMatchesRecyclerView)
     RecyclerView mRecyclerView;
-
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
+
     private ArrayList<Object> matches;
 
 
@@ -62,12 +62,7 @@ public class FinishedMatchesFragment extends BaseFragment implements MatchSearch
     @Override
     public void onResume() {
         super.onResume();
-        adapter.setOnItemClickListener(new FinishedMatchesAdapter.MyClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-                Object match = matches.get(position);
-            }
-        });
+        adapter.setOnItemClickListener((position, v) -> NavigationUtils.navigateToDetails(CONTEXT, matches.get(position)));
     }
 
     @Override

@@ -1,18 +1,16 @@
 package com.example.jaimequeraltgarrigos.mvptest.ui.fragment;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.ProgressBar;
 
 import com.example.jaimequeraltgarrigos.mvptest.AppComponent;
 import com.example.jaimequeraltgarrigos.mvptest.R;
 import com.example.jaimequeraltgarrigos.mvptest.common.BaseFragment;
-import com.example.jaimequeraltgarrigos.mvptest.common.BasePresenter;
 import com.example.jaimequeraltgarrigos.mvptest.component.DaggerMatchSearchComponent;
 import com.example.jaimequeraltgarrigos.mvptest.module.MatchSearchModule;
 import com.example.jaimequeraltgarrigos.mvptest.presenter.MatchesSearchPresenter;
+import com.example.jaimequeraltgarrigos.mvptest.ui.activity.NavigationUtils;
 import com.example.jaimequeraltgarrigos.mvptest.ui.adapter.LiveMatchesAdapter;
 import com.example.jaimequeraltgarrigos.mvptest.ui.viewmodel.MatchSearchView;
 
@@ -28,15 +26,14 @@ import butterknife.BindView;
 public class LiveMatchesFragment extends BaseFragment implements MatchSearchView {
     @Inject
     MatchesSearchPresenter presenter;
-
     @Inject
     LiveMatchesAdapter adapter;
 
     @BindView(R.id.allMatchesRecyclerView)
     RecyclerView mRecyclerView;
-
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
+
     private ArrayList<Object> matches;
 
 
@@ -61,12 +58,7 @@ public class LiveMatchesFragment extends BaseFragment implements MatchSearchView
     @Override
     public void onResume() {
         super.onResume();
-        adapter.setOnItemClickListener(new LiveMatchesAdapter.MyClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-                Object match = matches.get(position);
-            }
-        });
+        adapter.setOnItemClickListener((position, v) -> NavigationUtils.navigateToDetails(CONTEXT, matches.get(position)));
     }
 
     @Override
@@ -74,10 +66,6 @@ public class LiveMatchesFragment extends BaseFragment implements MatchSearchView
         return R.layout.fragment_allmatches;
     }
 
-/*    @Override
-    protected BasePresenter getPresenter() {
-        return presenter;
-    }*/
 
     protected void viewCreated() {
         String query = getArguments().getString("query");

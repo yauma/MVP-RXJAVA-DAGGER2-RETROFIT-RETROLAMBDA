@@ -38,7 +38,7 @@ public class MatchesSearchPresenter implements MatchSearchServerCallback {
             searchInteractor.fecthAllMatches(this);
         } else if (query.equals(MyConstant.LIVE)){
             searchInteractor.fecthLiveMatches(this);
-        }else{
+        }else {
             searchInteractor.fecthFinishedMatches(this);
         }
 

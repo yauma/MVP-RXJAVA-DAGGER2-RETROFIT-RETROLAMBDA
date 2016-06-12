@@ -1,15 +1,13 @@
 package com.example.jaimequeraltgarrigos.mvptest.ui.fragment;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.ProgressBar;
 
 import com.example.jaimequeraltgarrigos.mvptest.AppComponent;
+import com.example.jaimequeraltgarrigos.mvptest.MyConstant;
 import com.example.jaimequeraltgarrigos.mvptest.R;
 import com.example.jaimequeraltgarrigos.mvptest.common.BaseFragment;
-import com.example.jaimequeraltgarrigos.mvptest.common.BasePresenter;
 import com.example.jaimequeraltgarrigos.mvptest.component.DaggerMatchSearchComponent;
 import com.example.jaimequeraltgarrigos.mvptest.module.MatchSearchModule;
 import com.example.jaimequeraltgarrigos.mvptest.presenter.MatchesSearchPresenter;
@@ -26,7 +24,7 @@ import butterknife.BindView;
 /**
  * Created by jaimequeraltgarrigos on 6/11/16.
  */
-public class AllMatchesFragment extends BaseFragment implements MatchSearchView {
+public class DetailsFragment extends BaseFragment implements MatchSearchView {
 
     @Inject
     MatchesSearchPresenter presenter;
@@ -40,16 +38,6 @@ public class AllMatchesFragment extends BaseFragment implements MatchSearchView 
     private ArrayList<Object> matches;
 
 
-    public static AllMatchesFragment newInstance(String query) {
-        AllMatchesFragment allMatchesFragment = new AllMatchesFragment();
-
-        Bundle args = new Bundle();
-        args.putString("query", query);
-        allMatchesFragment.setArguments(args);
-
-        return allMatchesFragment;
-    }
-
     @Override
     protected void setupComponent(AppComponent component) {
         DaggerMatchSearchComponent.builder().appComponent(component)
@@ -59,19 +47,13 @@ public class AllMatchesFragment extends BaseFragment implements MatchSearchView 
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        adapter.setOnItemClickListener((position, v) -> NavigationUtils.navigateToDetails(CONTEXT, matches.get(position)));
-    }
-
-    @Override
     protected int getFragmentLayout() {
         return R.layout.fragment_allmatches;
     }
 
 
     protected void viewCreated() {
-        String query = getArguments().getString("query");
+        String query = MyConstant.ALL;
         presenter.searchMatches(query);
         setupList(mRecyclerView, adapter);
     }
@@ -79,7 +61,6 @@ public class AllMatchesFragment extends BaseFragment implements MatchSearchView 
 
     @Override
     public void displayFoundMatches(ArrayList<Object> matches) {
-        mProgressBar.setVisibility(View.INVISIBLE);
         this.matches = matches;
         adapter.addLeagues(matches);
     }

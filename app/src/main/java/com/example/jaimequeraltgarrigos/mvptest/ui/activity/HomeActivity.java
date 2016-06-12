@@ -25,7 +25,7 @@ public class HomeActivity extends BaseActivity {
     private ViewPager viewPager;
 
     @Override
-    protected void injectViews() {
+    protected void setViews() {
     }
 
     @Override

@@ -15,8 +15,6 @@ import com.example.jaimequeraltgarrigos.mvptest.AppComponent;
 import com.example.jaimequeraltgarrigos.mvptest.MyApplication;
 import com.example.jaimequeraltgarrigos.mvptest.R;
 
-import butterknife.ButterKnife;
-
 
 /**
  * Created by Pedro Antonio Hernández on 12/06/2015.
@@ -51,10 +49,10 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
         setNavDrawer();
         setTablayout();
         injectDependencies();
-        injectViews();
+        setViews();
     }
 
-    protected abstract void injectViews();
+    protected abstract void setViews();
 
     protected abstract void setTablayout();
 

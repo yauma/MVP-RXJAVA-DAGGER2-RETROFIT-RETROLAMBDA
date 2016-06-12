@@ -8,6 +8,7 @@ import com.example.jaimequeraltgarrigos.mvptest.ui.adapter.AllMatchesAdapter;
 import com.example.jaimequeraltgarrigos.mvptest.ui.adapter.FinishedMatchesAdapter;
 import com.example.jaimequeraltgarrigos.mvptest.ui.adapter.LiveMatchesAdapter;
 import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.AllMatchesFragment;
+import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.DetailsFragment;
 import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.FinishedMatchesFragment;
 import com.example.jaimequeraltgarrigos.mvptest.ui.fragment.LiveMatchesFragment;
 
@@ -30,6 +31,7 @@ public interface MatchSearchComponent {
 
     void inject(AllMatchesFragment allMatchesFragment);
 
+    void inject(DetailsFragment detailsFragment);
 
     MatchesSearchPresenter getPresenter();
 
@@ -39,6 +41,5 @@ public interface MatchSearchComponent {
     LiveMatchesAdapter getLiveAdapter();
 
     FinishedMatchesAdapter getFinishedAdapter();
-
 
 }
