@@ -19,7 +19,46 @@ import java.util.ArrayList;
 /**
  * Created by jaimequeraltgarrigos on 6/11/16.
  */
-public class LiveMatchesAdapter extends RecyclerView.Adapter<LiveMatchesAdapter.ViewHolder> {
+public class LiveMatchesAdapter extends MatchesAdapter {
+
+    public static MyClickListener myClickListener;
+
+    public LiveMatchesAdapter(Context context) {
+        super(context);
+    }
+
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == LEAGUE_NAME) {
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_league_name, parent, false);
+            LeagueNameViewHolder matchViewHolder = new LeagueNameViewHolder(v);
+            return matchViewHolder;
+        } else {
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_matches, parent, false);
+            FinishedMatchViewHolder matchViewHolder = new FinishedMatchViewHolder(v);
+            return matchViewHolder;
+        }
+    }
+
+    public static class FinishedMatchViewHolder extends MatchViewHolder implements View.OnClickListener {
+
+        public FinishedMatchViewHolder(View itemView) {
+            super(itemView);
+            linearLayoutMatchContainer.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            myClickListener.onItemClick(getAdapterPosition(), v);
+        }
+    }
+
+    public void setOnItemClickListener(MyClickListener myClickListener) {
+        this.myClickListener = myClickListener;
+    }
+/*
 
 
     public static final int LEAGUE_NAME = 0;
@@ -150,5 +189,6 @@ public class LiveMatchesAdapter extends RecyclerView.Adapter<LiveMatchesAdapter.
     public interface MyClickListener {
         public void onItemClick(int position, View v);
     }
+*/
 
 }

@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by Pedro Antonio Hernández on 13/06/2015.
  */
-public class MatchesSearchPresenter extends BasePresenter implements MatchSearchServerCallback {
+public class MatchesSearchPresenter implements MatchSearchServerCallback {
 
     public static final String LOG_TAG = MatchesSearchPresenter.class.getSimpleName();
 
@@ -31,16 +31,7 @@ public class MatchesSearchPresenter extends BasePresenter implements MatchSearch
         searchInteractor = interactor;
     }
 
-    @Override
-    public void onStart() {
-        searchView.setupAdapter();
-        searchView.setupList();
-    }
 
-    @Override
-    public void onStop() {
-
-    }
 
     public void searchMatches(String query) {
         if (query.equals(MyConstant.ALL)) {

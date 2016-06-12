@@ -7,10 +7,6 @@ import java.util.ArrayList;
  */
 public interface MatchSearchView {
 
-    void setupList();
-
-    void setupAdapter();
-
     void displayFoundMatches(ArrayList<Object> matches);
 
     void displayFailedSearch();

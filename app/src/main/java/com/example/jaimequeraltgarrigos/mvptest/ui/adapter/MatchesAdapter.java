@@ -19,45 +19,7 @@ import java.util.ArrayList;
 /**
  * Created by jaimequeraltgarrigos on 6/11/16.
  */
-public class AllMatchesAdapter extends MatchesAdapter {
-    public static MyClickListener myClickListener;
-
-    public AllMatchesAdapter(Context context) {
-        super(context);
-    }
-
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (viewType == LEAGUE_NAME) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_league_name, parent, false);
-            LeagueNameViewHolder matchViewHolder = new LeagueNameViewHolder(v);
-            return matchViewHolder;
-        } else {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_matches, parent, false);
-            AllMatchViewHolder matchViewHolder = new AllMatchViewHolder(v);
-            return matchViewHolder;
-        }
-    }
-
-    public static class AllMatchViewHolder extends MatchViewHolder implements View.OnClickListener {
-
-        public AllMatchViewHolder(View itemView) {
-            super(itemView);
-            linearLayoutMatchContainer.setOnClickListener(this);
-
-        }
-
-        @Override
-        public void onClick(View v) {
-            myClickListener.onItemClick(getAdapterPosition(), v);
-        }
-    }
-
-    public void setOnItemClickListener(MyClickListener myClickListener) {
-        this.myClickListener = myClickListener;
-    }
-}
-/*
+public abstract class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHolder> {
 
 
     public static final int LEAGUE_NAME = 0;
@@ -67,14 +29,16 @@ public class AllMatchesAdapter extends MatchesAdapter {
     private ArrayList<Object> mDataSet;
     private final Context context;
 
-    private static MyClickListener myClickListener;
+    /*
+        private static MyClickListener myClickListener;
+    */
 
-    public AllMatchesAdapter(Context context) {
+    public MatchesAdapter(Context context) {
         this.mDataSet = new ArrayList<>();
         this.context = context;
     }
 
-    @Override
+/*    @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == LEAGUE_NAME) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_league_name, parent, false);
@@ -86,7 +50,7 @@ public class AllMatchesAdapter extends MatchesAdapter {
             return matchViewHolder;
         }
 
-    }
+    }*/
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
@@ -142,7 +106,7 @@ public class AllMatchesAdapter extends MatchesAdapter {
         }
     }
 
-    public static class MatchViewHolder extends ViewHolder implements View.OnClickListener {
+    public static class MatchViewHolder extends ViewHolder {
         CardView cv;
         TextView scoreTeam1;
         TextView scoreTeam2;
@@ -162,20 +126,22 @@ public class AllMatchesAdapter extends MatchesAdapter {
             team1Avatar = (ImageView) itemView.findViewById(R.id.team1Avatar);
             team2Avatar = (ImageView) itemView.findViewById(R.id.team2Avatar);
             linearLayoutMatchContainer = (LinearLayout) itemView.findViewById(R.id.linearLayoutContainer);
+/*
             linearLayoutMatchContainer.setOnClickListener(this);
+*/
 
         }
 
 
-        @Override
+/*        @Override
         public void onClick(View v) {
             myClickListener.onItemClick(getAdapterPosition(), v);
-        }
+        }*/
     }
 
-    public void setOnItemClickListener(MyClickListener myClickListener) {
+/*    public void setOnItemClickListener(MyClickListener myClickListener) {
         this.myClickListener = myClickListener;
-    }
+    }*/
 
 
     public static class LeagueNameViewHolder extends ViewHolder {
@@ -190,6 +156,5 @@ public class AllMatchesAdapter extends MatchesAdapter {
     public interface MyClickListener {
         public void onItemClick(int position, View v);
     }
-*/
 
-
+}

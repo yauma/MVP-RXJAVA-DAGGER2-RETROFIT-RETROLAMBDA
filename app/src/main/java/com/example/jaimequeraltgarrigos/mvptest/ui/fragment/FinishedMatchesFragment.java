@@ -75,28 +75,17 @@ public class FinishedMatchesFragment extends BaseFragment implements MatchSearch
         return R.layout.fragment_allmatches;
     }
 
-    @Override
+/*    @Override
     protected BasePresenter getPresenter() {
         return presenter;
-    }
+    }*/
 
     protected void viewCreated() {
         String query = getArguments().getString("query");
         presenter.searchMatches(query);
+        setupList(mRecyclerView, adapter);
     }
 
-    @Override
-    public void setupList() {
-
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(CONTEXT));
-        mRecyclerView.setAdapter(adapter);
-
-    }
-
-    @Override
-    public void setupAdapter() {
-    }
 
     @Override
     public void displayFoundMatches(ArrayList<Object> matches) {
