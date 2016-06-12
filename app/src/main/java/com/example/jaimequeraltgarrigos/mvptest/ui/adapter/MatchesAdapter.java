@@ -38,20 +38,6 @@ public abstract class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter
         this.context = context;
     }
 
-/*    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (viewType == LEAGUE_NAME) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_league_name, parent, false);
-            LeagueNameViewHolder matchViewHolder = new LeagueNameViewHolder(v);
-            return matchViewHolder;
-        } else {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_matches, parent, false);
-            MatchViewHolder matchViewHolder = new MatchViewHolder(v);
-            return matchViewHolder;
-        }
-
-    }*/
-
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         if (viewHolder.getItemViewType() == LEAGUE_NAME) {
@@ -126,23 +112,9 @@ public abstract class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter
             team1Avatar = (ImageView) itemView.findViewById(R.id.team1Avatar);
             team2Avatar = (ImageView) itemView.findViewById(R.id.team2Avatar);
             linearLayoutMatchContainer = (LinearLayout) itemView.findViewById(R.id.linearLayoutContainer);
-/*
-            linearLayoutMatchContainer.setOnClickListener(this);
-*/
-
         }
 
-
-/*        @Override
-        public void onClick(View v) {
-            myClickListener.onItemClick(getAdapterPosition(), v);
-        }*/
     }
-
-/*    public void setOnItemClickListener(MyClickListener myClickListener) {
-        this.myClickListener = myClickListener;
-    }*/
-
 
     public static class LeagueNameViewHolder extends ViewHolder {
         TextView leagueName;

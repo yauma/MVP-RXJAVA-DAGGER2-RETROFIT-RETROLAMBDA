@@ -75,10 +75,6 @@ public class FinishedMatchesFragment extends BaseFragment implements MatchSearch
         return R.layout.fragment_allmatches;
     }
 
-/*    @Override
-    protected BasePresenter getPresenter() {
-        return presenter;
-    }*/
 
     protected void viewCreated() {
         String query = getArguments().getString("query");
