@@ -9,7 +9,5 @@ The home screen is a matches listing.
 The second screen (cliking on a match) show details of a particular match and matches from the same competition.
 
 The API Used : GET http://api.whatsthescore.com
-Home
 <a href='https://postimage.org' target='_blank'><img src='https://s32.postimg.org/6png9iy6d/home.png' border='0' alt='home'/><br /><a target='_blank' href='https://postimage.org/'>pic hosting</a><br /><br />
-Details
 <a href='https://postimage.org' target='_blank'><img src='https://s31.postimg.org/hi1sgjipn/details_scrolling.png' border='0' alt='details-scrolling'/><br /><a target='_blank' href='https://postimage.org/'>post a picture</a><br /><br />
