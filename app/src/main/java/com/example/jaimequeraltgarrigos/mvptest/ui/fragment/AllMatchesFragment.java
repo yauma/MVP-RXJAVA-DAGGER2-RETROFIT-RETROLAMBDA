@@ -53,8 +53,7 @@ public class AllMatchesFragment extends BaseFragment implements MatchSearchView 
     @Override
     protected void setupComponent(AppComponent component) {
         DaggerMatchSearchComponent.builder().appComponent(component)
-                .matchSearchModule(new MatchSearchModule(this)).build()
-                .inject(this);
+                .matchSearchModule(new MatchSearchModule(this)).build().inject(this);
 
     }
 
